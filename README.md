@@ -36,7 +36,6 @@ Transformar un controlador monolítico con *code smells* reales en una API REST 
 | SLF4J + Logback | SLF4J 2.0.16 / Logback 1.4.14 | Logging |
 | springdoc-openapi-starter-webmvc-ui | 2.3.0 | OpenAPI 3 y Swagger UI |
 | JUnit 5, Mockito, MockMvc, AssertJ | (spring-boot-starter-test) | Pruebas automatizadas |
-
 ## Estructura de carpetas
 
 ```
