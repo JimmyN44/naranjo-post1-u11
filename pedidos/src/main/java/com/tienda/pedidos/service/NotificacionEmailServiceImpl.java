@@ -12,7 +12,6 @@ public class NotificacionEmailServiceImpl implements NotificacionService {
 
     @Override
     public void enviarConfirmacion(String clienteEmail, double total) {
-        // simulacion de envio de correo (fuera del alcance de este laboratorio)
         log.info("Correo de confirmacion enviado a clienteEmail={}, total={}", clienteEmail, total);
     }
 }
