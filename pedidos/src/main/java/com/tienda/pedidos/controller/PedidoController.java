@@ -58,6 +58,6 @@ public class PedidoController {
     public PedidoResponseDTO obtener(
             @Parameter(description = "ID del pedido", example = "1")
             @PathVariable Long id) {
-        return service.buscarPorId(id); // sin try/catch: la excepcion sube al GlobalExceptionHandler
+        return service.buscarPorId(id);
     }
 }
