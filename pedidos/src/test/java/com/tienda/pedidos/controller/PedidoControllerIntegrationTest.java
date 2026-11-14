@@ -22,9 +22,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Prueba de extremo a extremo de la Parte 1 (controller -> servicio -> Strategy -> JPA/H2).
- */
 @SpringBootTest
 @AutoConfigureMockMvc
 class PedidoControllerIntegrationTest {
