@@ -25,10 +25,6 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-/**
- * Gracias a DIP, el servicio se prueba sin Spring ni base de datos:
- * el repositorio y la notificacion se sustituyen por mocks.
- */
 class PedidoServiceImplTest {
 
     private PedidoRepository repo;
