@@ -2,7 +2,6 @@ package com.tienda.pedidos.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
-// DTO de salida - nunca incluye notasInternas
 @Schema(description = "Pedido devuelto por la API (nunca incluye notas internas)")
 public class PedidoResponseDTO {
 
