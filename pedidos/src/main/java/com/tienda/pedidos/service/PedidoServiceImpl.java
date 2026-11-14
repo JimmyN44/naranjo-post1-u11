@@ -13,12 +13,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-/**
- * Orquesta el caso de uso de pedidos: calculo, persistencia (via DAO) y notificacion.
- * Todas sus dependencias son abstracciones recibidas por constructor (DIP).
- * Spring puebla el Map de estrategias con el nombre de cada bean como llave
- * ("REGULAR", "VIP", "MAYORISTA").
- */
+
 @Service
 public class PedidoServiceImpl implements PedidoService {
 
@@ -66,7 +61,6 @@ public class PedidoServiceImpl implements PedidoService {
         pedido.setFechaCreacion(LocalDateTime.now());
 
         Pedido guardado = repo.save(pedido);
-        // Nunca se registra notasInternas: solo identificadores y montos
         log.info("Pedido creado exitosamente con id={}, tipoCliente={}, descuento={}, total={}",
                 guardado.getId(), guardado.getTipoCliente(), guardado.getDescuento(), guardado.getTotal());
         notificador.enviarConfirmacion(guardado.getClienteEmail(), guardado.getTotal());
