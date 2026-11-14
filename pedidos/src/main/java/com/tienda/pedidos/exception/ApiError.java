@@ -3,9 +3,6 @@ package com.tienda.pedidos.exception;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.LocalDateTime;
 
-/**
- * Cuerpo JSON uniforme para todas las respuestas de error de la API.
- */
 @Schema(description = "Cuerpo uniforme de las respuestas de error")
 public class ApiError {
 
