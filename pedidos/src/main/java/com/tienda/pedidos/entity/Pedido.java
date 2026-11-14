@@ -12,13 +12,13 @@ public class Pedido {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String clienteEmail;
-    private String tipoCliente;      // REGULAR, VIP o MAYORISTA
+    private String tipoCliente;     
     private Double subtotal;
     private Double descuento;
     private Double iva;
     private Double total;
     private String estado;
-    private String notasInternas;    // uso exclusivo de logistica, nunca debe salir al cliente
+    private String notasInternas;   
     private LocalDateTime fechaCreacion;
 
     public Long getId() {
