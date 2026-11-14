@@ -16,9 +16,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * Verifica el manejador generico (500) simulando un fallo inesperado del servicio.
- */
 @WebMvcTest(PedidoController.class)
 class GlobalExceptionHandlerTest {
 
