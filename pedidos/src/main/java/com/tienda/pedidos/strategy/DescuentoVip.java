@@ -2,7 +2,6 @@ package com.tienda.pedidos.strategy;
 
 import org.springframework.stereotype.Component;
 
-// Cliente VIP: 15% de descuento sobre el subtotal
 @Component("VIP")
 public class DescuentoVip implements EstrategiaDescuento {
 
