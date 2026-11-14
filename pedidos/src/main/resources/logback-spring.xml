@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- src/main/resources/logback-spring.xml -->
 <configuration>
 
-  <!-- Consola: hora, nivel, logger abreviado y mensaje -->
   <appender name="CONSOLA" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
       <pattern>%d{HH:mm:ss} %-5level %logger{30} - %msg%n</pattern>
     </encoder>
   </appender>
 
-  <!-- Archivo logs/pedidos.log con rotacion diaria y 30 dias de historial -->
   <appender name="ARCHIVO"
             class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>logs/pedidos.log</file>
@@ -23,7 +20,6 @@
     </encoder>
   </appender>
 
-  <!-- Paquete de la aplicacion en DEBUG para el seguimiento tecnico -->
   <logger name="com.tienda.pedidos" level="DEBUG"/>
 
   <root level="INFO">
