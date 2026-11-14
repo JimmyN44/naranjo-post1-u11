@@ -1,7 +1,6 @@
 # Compilacion Maven
 target/
 !.mvn/wrapper/maven-wrapper.jar
-
 # Logs de la aplicacion (logs/pedidos.log)
 logs/
 *.log
