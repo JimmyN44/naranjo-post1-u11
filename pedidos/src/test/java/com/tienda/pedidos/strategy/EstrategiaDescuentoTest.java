@@ -22,4 +22,5 @@ class EstrategiaDescuentoTest {
     void mayoristaAplica25PorCiento() {
         assertThat(new DescuentoMayorista().calcularDescuento(SUBTOTAL)).isEqualTo(25000.0);
     }
+    
 }
