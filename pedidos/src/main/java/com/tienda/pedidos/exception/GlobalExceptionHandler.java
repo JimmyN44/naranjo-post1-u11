@@ -18,10 +18,7 @@ import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 import java.util.stream.Collectors;
 
-/**
- * Manejo centralizado de errores: reemplaza el try/catch disperso del codigo de partida,
- * que silenciaba la excepcion con println y devolvia null (200 OK vacio).
- */
+
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -32,7 +29,6 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ApiError handleNotFound(RecursoNoEncontradoException ex,
                                    HttpServletRequest req) {
-        // El WARN con el id ya lo registra PedidoServiceImpl; aqui solo seguimiento tecnico
         log.debug("Respondiendo 404 en path={}: {}", req.getRequestURI(), ex.getMessage());
         return new ApiError(404, "Not Found", ex.getMessage(), req.getRequestURI());
     }
@@ -48,8 +44,7 @@ public class GlobalExceptionHandler {
         return new ApiError(400, "Bad Request", errores, req.getRequestURI());
     }
 
-    // Cuerpo JSON mal formado o parametro de ruta con tipo invalido (ej. /api/pedidos/abc):
-    // es un error del cliente (400), no debe caer en el manejador generico como 500
+ 
     @ExceptionHandler({HttpMessageNotReadableException.class, MethodArgumentTypeMismatchException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleSolicitudMalFormada(Exception ex, HttpServletRequest req) {
@@ -60,9 +55,6 @@ public class GlobalExceptionHandler {
         return new ApiError(400, "Bad Request", mensaje, req.getRequestURI());
     }
 
-    // Excepciones de Spring MVC que ya traen su propio codigo HTTP
-    // (ruta inexistente 404, metodo no soportado 405, media type no soportado 415):
-    // se conserva ese codigo para no convertirlas en 500
     @ExceptionHandler({NoResourceFoundException.class,
             HttpRequestMethodNotSupportedException.class,
             HttpMediaTypeNotSupportedException.class})
@@ -76,11 +68,9 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(body);
     }
 
-    // Ultima red de seguridad: nunca expone el mensaje ni la traza de la excepcion al cliente
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ApiError handleGeneral(Exception ex, HttpServletRequest req) {
-        // La traza completa queda solo en el log del servidor (ultimo argumento = excepcion)
         log.error("Error inesperado en method={}, path={}", req.getMethod(), req.getRequestURI(), ex);
         return new ApiError(500, "Internal Server Error",
                 "Error inesperado. Contactar soporte.", req.getRequestURI());
